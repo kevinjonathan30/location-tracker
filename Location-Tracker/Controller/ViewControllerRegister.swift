@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class ViewControllerRegister: UIViewController {
+    
+    var ref: DatabaseReference!
 
     @IBOutlet weak var textUsername: UITextField!
     @IBOutlet weak var textPassword: UITextField!
@@ -17,6 +19,8 @@ class ViewControllerRegister: UIViewController {
     @IBAction func btnRegister(_ sender: UIButton) {
         if(textUsername.text != "" && textPassword.text != "" && textReenterPassword.text != "") {
             if(textPassword.text == textReenterPassword.text) {
+                let value = ["username": textUsername.text!,	"password": textPassword.text!]
+                ref.child(textUsername.text!).child("userProfile").setValue(value)
                 print("Register Success, Username: \(textUsername.text!), Password: \(textPassword.text!)")
             } else {
                 print("Password doesn't match")
@@ -27,7 +31,7 @@ class ViewControllerRegister: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
     

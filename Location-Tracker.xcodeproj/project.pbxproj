@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		81D032AD2565556D009C36B8 /* ViewControllerRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D032AC2565556D009C36B8 /* ViewControllerRegister.swift */; };
 		81D032AF256558E3009C36B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D032AE256558E3009C36B8 /* ViewController.swift */; };
+		81D032B1256A76AE009C36B8 /* ViewControllerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D032B0256A76AE009C36B8 /* ViewControllerMain.swift */; };
 		81E33AAA2563E05B00C742C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E33AA92563E05B00C742C7 /* AppDelegate.swift */; };
 		81E33AAC2563E05B00C742C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E33AAB2563E05B00C742C7 /* SceneDelegate.swift */; };
 		81E33AB12563E05B00C742C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81E33AAF2563E05B00C742C7 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		039DA78A670D32D7FD44D2AB /* Pods_Location_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Location_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D032AC2565556D009C36B8 /* ViewControllerRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRegister.swift; sourceTree = "<group>"; };
 		81D032AE256558E3009C36B8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81D032B0256A76AE009C36B8 /* ViewControllerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerMain.swift; sourceTree = "<group>"; };
 		81E33AA62563E05B00C742C7 /* Location-Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location-Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81E33AA92563E05B00C742C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81E33AAB2563E05B00C742C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				81D032AE256558E3009C36B8 /* ViewController.swift */,
 				81D032AC2565556D009C36B8 /* ViewControllerRegister.swift */,
+				81D032B0256A76AE009C36B8 /* ViewControllerMain.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				81E33AAA2563E05B00C742C7 /* AppDelegate.swift in Sources */,
 				81E33AAC2563E05B00C742C7 /* SceneDelegate.swift in Sources */,
 				81D032AF256558E3009C36B8 /* ViewController.swift in Sources */,
+				81D032B1256A76AE009C36B8 /* ViewControllerMain.swift in Sources */,
 				81D032AD2565556D009C36B8 /* ViewControllerRegister.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

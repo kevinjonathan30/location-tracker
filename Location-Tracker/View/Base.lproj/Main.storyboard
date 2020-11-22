@@ -92,11 +92,28 @@
                     <connections>
                         <outlet property="textPassword" destination="U7S-Fn-byk" id="vI4-Pb-C8S"/>
                         <outlet property="textUsername" destination="xW5-jt-YEy" id="w5E-ze-3Zc"/>
+                        <segue destination="G5Z-4l-xiw" kind="show" identifier="toMain" id="f40-gf-x4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="121.875"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="xxA-xv-isa">
+            <objects>
+                <viewController title="Main" id="G5Z-4l-xiw" customClass="ViewControllerMain" customModule="Location_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TfV-Z1-XWl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xEJ-T8-F15"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="GOR-ve-PnH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WYf-bh-Ejy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1919" y="-179"/>
         </scene>
         <!--Register-->
         <scene sceneID="ZRz-UW-Sss">
@@ -186,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VpW-lf-2Uo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="122"/>
+            <point key="canvasLocation" x="1919" y="483"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wjw-M9-KbL">

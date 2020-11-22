@@ -12,6 +12,7 @@ import Firebase
 class ViewController: UIViewController {
     
     var ref: DatabaseReference!
+    let userDefaults = UserDefaults.standard
 
     @IBOutlet weak var textUsername: UITextField!
     @IBOutlet weak var textPassword: UITextField!
@@ -28,8 +29,12 @@ class ViewController: UIViewController {
                             if(m as! String == "password") {
                                 if(n as! String == self.textPassword.text!) {
                                     let alert = UIAlertController(title: "Login Success", message: "Anda terlogin sebagai \(self.textUsername.text!)", preferredStyle: .alert)
-                                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil))
+                                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {
+                                        (alert: UIAlertAction!) in self.performSegue(withIdentifier: "toMain", sender: self)
+                                    }))
                                     self.present(alert, animated: true, completion: nil)
+                                    //self.userDefaults.setValue(self.textUsername.text!, forKey: "username")
+                                    
                                 } else {
                                     let alert = UIAlertController(title: "Error", message: "Password salah!", preferredStyle: .alert)
                                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil))
@@ -56,6 +61,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        if(self.userDefaults.value(forKey: "username") != nil) {
+            self.performSegue(withIdentifier: "toMain", sender: self)
+        }
         // Do any additional setup after loading the view.
     }
 }

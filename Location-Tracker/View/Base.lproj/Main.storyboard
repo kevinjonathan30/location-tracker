@@ -134,10 +134,15 @@
                                     <action selector="btnSignOut:" destination="G5Z-4l-xiw" eventType="touchUpInside" id="jbz-bM-mK5"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GlV-sz-Sm7">
+                                <rect key="frame" x="0.0" y="347" width="414" height="515"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="GlV-sz-Sm7" firstAttribute="top" secondItem="iq1-lQ-aeL" secondAttribute="bottom" constant="20" id="0He-fs-wyn"/>
                             <constraint firstItem="iq1-lQ-aeL" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" constant="20" id="20s-1W-D28"/>
+                            <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="GlV-sz-Sm7" secondAttribute="trailing" id="2DT-CZ-Jzu"/>
                             <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="S6j-Gf-zr4" secondAttribute="trailing" constant="20" id="3tX-Zy-eyC"/>
                             <constraint firstItem="S6j-Gf-zr4" firstAttribute="top" secondItem="2Od-qk-QpA" secondAttribute="bottom" constant="32" id="6rS-5X-IVW"/>
                             <constraint firstItem="2Od-qk-QpA" firstAttribute="top" secondItem="PSw-fX-rDx" secondAttribute="bottom" constant="32" id="AIS-fN-duX"/>
@@ -149,11 +154,14 @@
                             <constraint firstItem="2Od-qk-QpA" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" constant="20" id="kS1-Qc-iAj"/>
                             <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="2Od-qk-QpA" secondAttribute="trailing" constant="20" id="mt9-7X-Hkm"/>
                             <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="iq1-lQ-aeL" secondAttribute="trailing" constant="20" id="nda-MA-xzS"/>
+                            <constraint firstItem="xEJ-T8-F15" firstAttribute="bottom" secondItem="GlV-sz-Sm7" secondAttribute="bottom" id="rUx-hw-Sql"/>
+                            <constraint firstItem="GlV-sz-Sm7" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" id="uVA-jk-vF2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xEJ-T8-F15"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="GOR-ve-PnH"/>
                     <connections>
+                        <outlet property="myMap" destination="GlV-sz-Sm7" id="fYB-rS-Vzx"/>
                         <outlet property="textUsername" destination="PSw-fX-rDx" id="JBM-2q-Lcz"/>
                     </connections>
                 </viewController>

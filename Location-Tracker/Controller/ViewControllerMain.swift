@@ -21,25 +21,27 @@ class ViewControllerMain: UIViewController, CLLocationManagerDelegate {
     var delegate: backDelegate?
     var ref: DatabaseReference!
     var locationManager: CLLocationManager!
-    var latitude = ""
-    var longitude = ""
-    let annotationLocations = [
-        ["title": "Pinned", "latitude": -26.2000, "longitude": 28.0450],
-        ["title": "Pinned", "latitude": -26.2100, "longitude": 28.0500]
-    ]
+    var latitude : Double = 0
+    var longitude : Double = 0
 
     @IBOutlet weak var textUsername: UILabel!
     @IBAction func btnSaveLocation(_ sender: UIButton) {
-        locationManager.startUpdatingLocation()
         let today = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm E, d MMM y"
         let value = ["date": formatter.string(from: today), "latitude": latitude, "longitude": longitude] as [String : Any]
         ref.child(myUsername).child("savedLocations").childByAutoId().setValue(value)
+        locationManager.startUpdatingLocation()
     }
     @IBAction func btnHapusDatabaseTracker(_ sender: UIButton) {
         let annotations = myMap.annotations.filter({ !($0 is MKUserLocation) })
         myMap.removeAnnotations(annotations)
+        ref.child(myUsername).child("savedLocations").removeValue { (error, ref) in
+            if error != nil {
+                print("Error")
+            }
+        }
+        locationManager.startUpdatingLocation()
     }
     @IBAction func btnSignOut(_ sender: UIButton) {
         delegate?.resetSignInStatus(data:true)
@@ -49,10 +51,8 @@ class ViewControllerMain: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var myMap: MKMapView!
     var location: CLLocation! {
         didSet {
-            latitude = "\(location.coordinate.latitude)"
-            longitude = "\(location.coordinate.longitude)"
-            print(latitude)
-            print(longitude)
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
             let mapCoord = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let latDelta: CLLocationDegrees = 0.01
             let lonDelta: CLLocationDegrees = 0.01
@@ -64,11 +64,28 @@ class ViewControllerMain: UIViewController, CLLocationManagerDelegate {
     }
     
     func generateAnnotations() {
-        for location in annotationLocations {
-            let annotations = MKPointAnnotation()
-            annotations.title = location["title"] as? String
-            annotations.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees)
-            myMap.addAnnotation(annotations)
+        ref.child(myUsername).child("savedLocations").observe(.value, with: { (snapshot) in
+            if(snapshot.childrenCount > 0) {
+                let v = snapshot.value as! NSDictionary
+                for (_,j) in v {
+                    var latitudeTemp : Any = 0
+                    var longitudeTemp : Any = 0
+                    for (m,n) in j as! NSDictionary {
+                        if(m as! String == "latitude") {
+                            latitudeTemp = n
+                        }
+                        if(m as! String == "longitude") {
+                            longitudeTemp = n
+                        }
+                    }
+                    let annotations = MKPointAnnotation()
+                    annotations.title = "Pinned"
+                    annotations.coordinate = CLLocationCoordinate2D(latitude: latitudeTemp as! CLLocationDegrees, longitude: longitudeTemp as! CLLocationDegrees)
+                    self.myMap.addAnnotation(annotations)
+                }
+            }
+          }) { (error) in
+            print(error.localizedDescription)
         }
     }
 

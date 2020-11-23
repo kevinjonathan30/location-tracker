@@ -106,14 +106,60 @@
                     <view key="view" contentMode="scaleToFill" id="TfV-Z1-XWl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, user!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSw-fX-rDx">
+                                <rect key="frame" x="20" y="120" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Od-qk-QpA">
+                                <rect key="frame" x="20" y="173" width="374" height="30"/>
+                                <state key="normal" title="Save Location"/>
+                                <connections>
+                                    <action selector="btnSaveLocation:" destination="G5Z-4l-xiw" eventType="touchUpInside" id="3Zy-EQ-aYk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6j-Gf-zr4">
+                                <rect key="frame" x="20" y="235" width="374" height="30"/>
+                                <state key="normal" title="Hapus Database Tracker"/>
+                                <connections>
+                                    <action selector="btnHapusDatabaseTracker:" destination="G5Z-4l-xiw" eventType="touchUpInside" id="xYD-VF-Kus"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq1-lQ-aeL">
+                                <rect key="frame" x="20" y="297" width="374" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="btnSignOut:" destination="G5Z-4l-xiw" eventType="touchUpInside" id="jbz-bM-mK5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iq1-lQ-aeL" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" constant="20" id="20s-1W-D28"/>
+                            <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="S6j-Gf-zr4" secondAttribute="trailing" constant="20" id="3tX-Zy-eyC"/>
+                            <constraint firstItem="S6j-Gf-zr4" firstAttribute="top" secondItem="2Od-qk-QpA" secondAttribute="bottom" constant="32" id="6rS-5X-IVW"/>
+                            <constraint firstItem="2Od-qk-QpA" firstAttribute="top" secondItem="PSw-fX-rDx" secondAttribute="bottom" constant="32" id="AIS-fN-duX"/>
+                            <constraint firstItem="iq1-lQ-aeL" firstAttribute="top" secondItem="S6j-Gf-zr4" secondAttribute="bottom" constant="32" id="FOT-pZ-tkV"/>
+                            <constraint firstItem="PSw-fX-rDx" firstAttribute="top" secondItem="xEJ-T8-F15" secondAttribute="top" constant="32" id="H6R-fQ-Tjk"/>
+                            <constraint firstItem="S6j-Gf-zr4" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" constant="20" id="TlE-gd-BRX"/>
+                            <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="PSw-fX-rDx" secondAttribute="trailing" constant="20" id="cAS-qy-2S3"/>
+                            <constraint firstItem="PSw-fX-rDx" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" constant="20" id="jNt-RG-sCM"/>
+                            <constraint firstItem="2Od-qk-QpA" firstAttribute="leading" secondItem="xEJ-T8-F15" secondAttribute="leading" constant="20" id="kS1-Qc-iAj"/>
+                            <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="2Od-qk-QpA" secondAttribute="trailing" constant="20" id="mt9-7X-Hkm"/>
+                            <constraint firstItem="xEJ-T8-F15" firstAttribute="trailing" secondItem="iq1-lQ-aeL" secondAttribute="trailing" constant="20" id="nda-MA-xzS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xEJ-T8-F15"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="GOR-ve-PnH"/>
+                    <connections>
+                        <outlet property="textUsername" destination="PSw-fX-rDx" id="JBM-2q-Lcz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYf-bh-Ejy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="-179"/>
+            <point key="canvasLocation" x="1918.840579710145" y="-179.46428571428569"/>
         </scene>
         <!--Register-->
         <scene sceneID="ZRz-UW-Sss">

@@ -8,11 +8,28 @@
 
 import UIKit
 
-class ViewControllerMain: UIViewController {
+protocol backDelegate {
+    func resetSignInStatus(data: Bool)
+}
 
+class ViewControllerMain: UIViewController {
+    
+    var myUsername : String = ""
+    var delegate: backDelegate?
+
+    @IBOutlet weak var textUsername: UILabel!
+    @IBAction func btnSaveLocation(_ sender: UIButton) {
+    }
+    @IBAction func btnHapusDatabaseTracker(_ sender: UIButton) {
+    }
+    @IBAction func btnSignOut(_ sender: UIButton) {
+        delegate?.resetSignInStatus(data:true)
+        navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        textUsername.text = "Hello, \(myUsername)!"
         // Do any additional setup after loading the view.
     }
     

@@ -9,31 +9,31 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, backDelegate {
     
     var ref: DatabaseReference!
     let userDefaults = UserDefaults.standard
 
     @IBOutlet weak var textUsername: UITextField!
     @IBOutlet weak var textPassword: UITextField!
+    func resetSignInStatus(data: Bool) {
+        self.userDefaults.removeObject(forKey: "username")
+    }
     @IBAction func btnSignIn(_ sender: UIButton) {
         if(textUsername.text != "" && textPassword.text != "") {
-            //print("Hello \(textUsername.text!), your password is \(textPassword.text!)")
             ref.child(textUsername.text!).observe(.value, with: { (snapshot) in
                 if(snapshot.childrenCount > 0) {
                     let v = snapshot.value as! NSDictionary
-                    //print(v as Any)
                     for (_,j) in v {
-                        //print(j)
                         for (m,n) in j as! NSDictionary {
                             if(m as! String == "password") {
                                 if(n as! String == self.textPassword.text!) {
+                                    self.userDefaults.setValue(self.textUsername.text!, forKey: "username")
                                     let alert = UIAlertController(title: "Login Success", message: "Anda terlogin sebagai \(self.textUsername.text!)", preferredStyle: .alert)
                                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {
                                         (alert: UIAlertAction!) in self.performSegue(withIdentifier: "toMain", sender: self)
                                     }))
                                     self.present(alert, animated: true, completion: nil)
-                                    //self.userDefaults.setValue(self.textUsername.text!, forKey: "username")
                                     
                                 } else {
                                     let alert = UIAlertController(title: "Error", message: "Password salah!", preferredStyle: .alert)
@@ -58,6 +58,15 @@ class ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMain" {
+            let vcMain = segue.destination as! ViewControllerMain
+            vcMain.myUsername = self.userDefaults.value(forKey: "username") as! String
+            vcMain.delegate = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
